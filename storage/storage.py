@@ -12,10 +12,11 @@ import webcolors
 def store_images(name, colour, image):
     '''Store image to directory according to its average colour.'''
     # create directory for colour if it doesn't exist
-    if not os.path.isdir(colour):
-        os.mkdir(colour)
+    directory = os.path.join('results', colour)
+    if not os.path.isdir(directory):
+        os.mkdir(directory)
 
-    cv2.imwrite(os.path.join(colour, name), image)
+    cv2.imwrite(os.path.join(directory, name), image)
     print(f'Stored image "{name}" to directory: "{colour}"')
 
 

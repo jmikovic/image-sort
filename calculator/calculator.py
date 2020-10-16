@@ -55,6 +55,5 @@ def callback(ch, method, properties, body):
 if __name__ == "__main__":
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='rabbitmq'))
     channel = connection.channel()
-    channel.queue_declare(queue='colours')
     channel.basic_consume(queue='images', on_message_callback=callback, auto_ack=True)
     channel.start_consuming()

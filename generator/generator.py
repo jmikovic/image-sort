@@ -22,7 +22,6 @@ if __name__ == "__main__":
 
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='rabbitmq'))
     channel = connection.channel()
-    channel.queue_declare(queue='images')
 
     if not os.path.isdir(image_directory):
         print(f"'{image_directory}' is not a directory.")

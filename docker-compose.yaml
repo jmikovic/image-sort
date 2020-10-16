@@ -10,16 +10,19 @@ services:
   generator:
     build: ./generator
     container_name: generator
+    restart: on-failure
     depends_on:
       - rabbitmq
   calculator:
     build: ./calculator
     container_name: calculator
+    restart: on-failure
     depends_on:
       - rabbitmq
   storage:
     build: ./storage
     container_name: storage
+    restart: on-failure
     depends_on:
       - rabbitmq
     volumes:

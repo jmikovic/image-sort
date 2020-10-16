@@ -1,4 +1,4 @@
-#! bin/python3
+#! /usr/bin/python3
 import json
 import math
 import os
@@ -81,7 +81,7 @@ def callback(ch, method, properties, body):
 
 
 if __name__ == "__main__":
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='rabbitmq'))
     channel = connection.channel()
     channel.basic_consume(queue='colours', on_message_callback=callback, auto_ack=True)
 

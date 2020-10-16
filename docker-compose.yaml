@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  rabbitmq:
+    image: rabbitmq:3.8
+    container_name: rabbitmq
+    hostname: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+  generator:
+    build: ./generator
+    container_name: generator
+    depends_on: rabbitmq
+  calculator:
+    build: ./calculator
+    container_name: calculator
+    depends_on: rabbitmq
+  storage:
+    build: ./storage
+    container_name: storage
+    depends_on: rabbitmq

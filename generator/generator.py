@@ -1,4 +1,4 @@
-#! bin/python3
+#! /usr/bin/python3
 import argparse
 import json
 import os
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     args = parse_arguments()
     image_directory = args.dir
 
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='rabbitmq'))
     channel = connection.channel()
     channel.queue_declare(queue='images')
 
